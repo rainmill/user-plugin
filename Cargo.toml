@@ -1,0 +1,44 @@
+[package]
+name = "rainmill-user"
+version = "0.1.0"
+description = "Rainmill User: registered users, groups, preferences and an activity log for Laterite applications"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/rainmill/user-plugin"
+publish = false
+
+# Marks this crate as a Laterite plugin and names the module it registers, so a
+# tool can tell what it is without building it. Which Laterite it supports is
+# stated by the dependency requirement below, never repeated here.
+[package.metadata.laterite]
+plugin = "rainmill.user"
+
+[dependencies]
+# Laterite crates are version-only so this manifest is location-independent
+# (identical whether dev-symlinked under an app's plugins/ tree or vendored).
+laterite-core = "0.9"
+# The admin descriptors (list, form and relation screens) and the settings store
+# the module contributes from its `register`.
+laterite-admin = "0.9"
+# Password hashing and the password policy: one implementation for operators and
+# for the application's users.
+laterite-auth = "0.9"
+# The schema identifier enums use sea-query's `Iden` derive, whose generated code
+# references the `sea_query` crate directly.
+sea-query = { version = "0.32", features = ["derive"] }
+# Query execution goes through sqlx's portable `Any` layer, matching the framework.
+sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "tls-rustls", "any"] }
+# Text timestamps (the framework stores times as ISO strings).
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+async-trait = "0.1"
+thiserror = "1"
+# Activation codes and reset tokens: random bytes, hashed before they are stored.
+rand = "0.8"
+sha2 = "0.10"
+hex = "0.4"
+
+[dev-dependencies]
+laterite-core = { version = "0.9", features = ["sqlite", "postgres", "testing"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }

@@ -1,0 +1,14 @@
+subject = "Welcome to {{ app_name }}"
+layout = "default"
+description = "Sent to a new user once their account is active."
+==
+Hello {{ name }},
+
+Your account on {{ app_name }} is ready. Sign in here: {{ link }}
+==
+# Welcome, {{ name }}
+
+Your account on **{{ app_name }}** is ready.
+
+{% set body %}Sign in{% endset %}
+{{ partial("button", url=link, body=body) }}
