@@ -1,9 +1,7 @@
 //! The plugin's settings (Settings > Users): how users sign in, register and
 //! become active, and what happens when they are deleted.
 
-use laterite_admin::form::FormField;
-use laterite_admin::settings::{SettingsItem, SettingsModel};
-use laterite_core::t;
+use laterite_admin::settings::SettingsModel;
 use serde::{Deserialize, Serialize};
 
 use crate::model::{Activation, LoginAttribute};
@@ -49,8 +47,11 @@ impl Default for UserSettings {
     }
 }
 
+/// The storage key, which `admin/settings.yaml` names as its `code`.
+pub const CODE: &str = "rainmill.user.settings";
+
 impl SettingsModel for UserSettings {
-    const CODE: &'static str = "rainmill.user.settings";
+    const CODE: &'static str = CODE;
 }
 
 impl UserSettings {
@@ -64,49 +65,3 @@ impl UserSettings {
 
 /// The permission to change these settings.
 pub const PERMISSION: &str = "rainmill.user.settings";
-
-/// The settings screen, as the module registers it.
-pub fn settings_item() -> SettingsItem {
-    SettingsItem::new(
-        UserSettings::CODE,
-        t!("Users"),
-        vec![
-            FormField::select(
-                "login_attribute",
-                t!("Sign in with"),
-                vec![
-                    ("email", "Email address"),
-                    ("username", "Username"),
-                    ("phone", "Phone number"),
-                ],
-            )
-            .help(t!(
-                "The attribute a user types to sign in. It must be unique."
-            )),
-            FormField::switch("allow_registration", t!("Allow registration")),
-            FormField::select(
-                "activation",
-                t!("Activation"),
-                vec![
-                    ("automatic", "Automatic"),
-                    ("user", "The user confirms a code"),
-                    ("operator", "An operator approves the account"),
-                ],
-            ),
-            FormField::switch("block_persistence", t!("One session at a time")),
-            FormField::switch("soft_delete", t!("Keep deleted users restorable")),
-            FormField::switch("guests", t!("Allow guest users")),
-            FormField::switch("notify_user", t!("Send new users a welcome message")),
-            FormField::switch("notify_operators", t!("Tell operators about new users")),
-            FormField::text("token_hours", t!("Code validity (hours)")).help(t!(
-                "How long an activation code or password reset link works."
-            )),
-        ],
-    )
-    .description(t!(
-        "Sign-in, registration and activation for the application's users."
-    ))
-    .category(t!("Users"))
-    .icon("users")
-    .permission(PERMISSION)
-}

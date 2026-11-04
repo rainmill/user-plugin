@@ -1,0 +1,63 @@
+# The Users screen: the list, the form and the groups section.
+entity: rainmill_user
+path: /users
+title: Users
+permission: rainmill.user.manage
+menu: { under: rainmill.user, icon: user, order: 10 }
+list:
+  order_by: created_at
+  order_dir: desc
+  creatable: true
+  deletable: true
+  columns:
+    display_name: { label: Name, searchable: true }
+    email:        { searchable: true }
+    phone:        { searchable: true }
+    username:     { searchable: true, invisible: true }
+    activated_at: { label: Activated, type: datetime }
+    banned_at:    { label: Banned, type: datetime, invisible: true }
+    last_seen_at: { label: Last seen, type: datetime }
+    created_at:   { label: Registered, type: datetime }
+    deleted_at:   { label: Deleted, type: datetime, invisible: true }
+  filters:
+    is_guest:     { type: boolean, label: Guest }
+    created_at:   { type: date, label: Registered }
+    last_seen_at: { type: date, label: Last seen }
+form:
+  title: User
+  persist: rainmill.user.user
+  fields:
+    first_name:   { span: half }
+    last_name:    { span: half }
+    display_name:
+      help: Shown in place of the first and last name when set.
+    email:        { span: half, rules: [email] }
+    phone:
+      span: half
+      help: "International format, with the country code."
+    username:     { span: half }
+    password:
+      type: password
+      span: half
+      transient: true
+      help: Leave empty to keep the current password.
+    locale:       { span: half }
+    timezone:     { span: half }
+    is_mail_blocked: { type: switch, label: Block mail to this user }
+    notes:        { type: textarea }
+relations:
+  groups:
+    title: Groups
+    label: Group
+    entity: rainmill_user_group
+    permission: rainmill.user.manage
+    pivot:
+      table: rainmill_user_membership
+      parent_key: user_id
+      related_key: group_id
+      source: rainmill.user.group
+    list:
+      order_by: name
+      columns:
+        name: {}
+        code: {}

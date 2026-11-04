@@ -1,0 +1,24 @@
+# The Groups screen.
+entity: rainmill_user_group
+path: /user-groups
+title: Groups
+permission: rainmill.user.groups
+menu: { under: rainmill.user, icon: users, order: 20 }
+list:
+  order_by: name
+  creatable: true
+  deletable: true
+  columns:
+    name:        { searchable: true }
+    code:        { searchable: true }
+    description: {}
+    created_at:  { label: Created, type: datetime }
+form:
+  title: Group
+  timestamps: true
+  fields:
+    name: { rules: [required] }
+    code:
+      rules: [required, unique]
+      help: A stable identifier the application refers to.
+    description: { type: textarea }

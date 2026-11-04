@@ -8,8 +8,9 @@
 //! emits an event under `user.` so other modules react.
 //!
 //! The admin gets a Users section with the Users and Groups screens and a
-//! settings page. Signing users in is the auth gateway's job; this plugin
-//! answers its credential and lookup questions.
+//! settings page, each declared in a YAML file under `admin/`. Signing users
+//! in is the auth gateway's job; this plugin answers its credential and
+//! lookup questions.
 
 mod admin;
 pub mod events;
@@ -70,7 +71,7 @@ impl Module for UserModule {
         registry.add_resource(admin::groups_resource());
         registry.add_picker_source(admin::group_picker());
         registry.add_persister(admin::persister());
-        registry.add_settings(settings::settings_item());
+        registry.add_settings(admin::settings_item());
         registry.add_mail_template(mail::WELCOME, include_str!("../mail/welcome.htm"));
         registry.add_mail_template(mail::ACTIVATE, include_str!("../mail/activate.htm"));
         registry.add_mail_template(mail::INVITE, include_str!("../mail/invite.htm"));
