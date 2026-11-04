@@ -89,6 +89,6 @@ mod tests {
         assert_eq!(groups.base_path, "/user-groups");
         let settings = super::settings_item();
         assert_eq!(settings.code, crate::settings::CODE);
-        assert_eq!(settings.fields.len(), 9);
+        assert_eq!(settings.fields.len(), 12);
     }
 }

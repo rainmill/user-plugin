@@ -6,26 +6,38 @@ category: Users
 icon: users
 permission: rainmill.user.settings
 fields:
+  sign_in:
+    type: section
+    label: Sign-in and registration
   login_attribute:
     type: select
     label: Sign in with
+    span: half
     help: The attribute a user types to sign in. It must be unique.
     options:
       - { value: email, label: Email address }
       - { value: username, label: Username }
       - { value: phone, label: Phone number }
-  allow_registration: { type: switch }
   activation:
     type: select
+    span: half
     options:
       - { value: automatic, label: Automatic }
       - { value: user, label: The user confirms a code }
       - { value: operator, label: An operator approves the account }
-  block_persistence: { type: switch, label: One session at a time }
-  soft_delete:       { type: switch, label: Keep deleted users restorable }
-  guests:            { type: switch, label: Allow guest users }
-  notify_user:       { type: switch, label: Send new users a welcome message }
-  notify_operators:  { type: switch, label: Tell operators about new users }
+  allow_registration: { type: switch, span: third }
+  guests:             { type: switch, span: third, label: Allow guest users }
+  block_persistence:  { type: switch, span: third, label: One session at a time }
   token_hours:
     label: Code validity (hours)
+    span: half
     help: How long an activation code or password reset link works.
+  deletion:
+    type: section
+    label: Deleting users
+  soft_delete: { type: switch, label: Keep deleted users restorable, help: "A deleted user stays restorable from the list. Off removes the record for good." }
+  notifications:
+    type: section
+    label: Notifications
+  notify_user:      { type: switch, span: half, label: Send new users a welcome message }
+  notify_operators: { type: switch, span: half, label: Tell operators about new users }
