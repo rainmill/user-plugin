@@ -1,11 +1,8 @@
-subject = "Confirm your new email address on {{ app_name }}"
-layout = "default"
-description = "Sent when a user changes their email address."
-==
-Hello {{ name }},
-
-Confirm your new email address for {{ app_name }} here (the link works for {{ expires }}): {{ link }}
-==
+---
+subject: "Confirm your new email address on {{ app_name }}"
+layout: default
+description: Sent when a user changes their email address.
+---
 # Confirm your new email address
 
 {% set body %}Confirm{% endset %}

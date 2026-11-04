@@ -1,11 +1,8 @@
-subject = "New user on {{ app_name }}: {{ name }}"
-layout = "default"
-description = "Sent to operators when a user registers."
-==
-{{ name }} registered on {{ app_name }} ({{ login }}).
-
-Review the account here: {{ link }}
-==
+---
+subject: "New user on {{ app_name }}: {{ name }}"
+layout: default
+description: Sent to operators when a user registers.
+---
 # New user: {{ name }}
 
 **{{ name }}** registered on **{{ app_name }}** with {{ login }}.

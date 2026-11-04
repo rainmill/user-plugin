@@ -1,13 +1,8 @@
-subject = "Activate your account on {{ app_name }}"
-layout = "default"
-description = "Sent to a new user who must confirm their email address before signing in."
-==
-Hello {{ name }},
-
-Confirm your account on {{ app_name }} here (the link works for {{ expires }}): {{ link }}
-
-If you did not register, ignore this message.
-==
+---
+subject: "Activate your account on {{ app_name }}"
+layout: default
+description: Sent to a new user who must confirm their email address before signing in.
+---
 # One more step, {{ name }}
 
 Confirm your account on **{{ app_name }}** to start using it.

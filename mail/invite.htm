@@ -1,13 +1,8 @@
-subject = "You have an account on {{ app_name }}"
-layout = "default"
-description = "Sent to a user an operator created, with a link to choose a password."
-==
-Hello {{ name }},
-
-An account was made for you on {{ app_name }}. Your sign-in is {{ login }}.
-
-Choose your password here (the link works for {{ expires }}): {{ link }}
-==
+---
+subject: "You have an account on {{ app_name }}"
+layout: default
+description: Sent to a user an operator created, with a link to choose a password.
+---
 # Welcome, {{ name }}
 
 An account was made for you on **{{ app_name }}**.

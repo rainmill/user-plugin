@@ -1,13 +1,8 @@
-subject = "Reset your password on {{ app_name }}"
-layout = "default"
-description = "Sent when a user asks to reset their password."
-==
-Hello {{ name }},
-
-Reset your password here (the link works for {{ expires }}): {{ link }}
-
-If you did not ask for this, ignore the message; your password stays as it is.
-==
+---
+subject: "Reset your password on {{ app_name }}"
+layout: default
+description: Sent when a user asks to reset their password.
+---
 # Reset your password
 
 {% set body %}Choose a new password{% endset %}
