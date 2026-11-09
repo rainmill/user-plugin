@@ -7,6 +7,8 @@ bump is breaking and a patch is additive.
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-10
+
 ### Added
 
 - First release. Front-end users for Laterite: registration, activation, sign-in, password reset, bans, groups, guests and preferences, every change announced as an event.

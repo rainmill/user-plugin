@@ -5,7 +5,6 @@ description = "Rainmill User: registered users, groups, preferences and an activ
 edition = "2021"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/rainmill/user-plugin"
-publish = false
 
 # Marks this crate as a Laterite plugin and names the module it registers, so a
 # tool can tell what it is without building it. Which Laterite it supports is
@@ -16,13 +15,13 @@ plugin = "rainmill.user"
 [dependencies]
 # Laterite crates are version-only so this manifest is location-independent
 # (identical whether dev-symlinked under an app's plugins/ tree or vendored).
-laterite-core = "0.9"
+laterite-core = "0.9.31"
 # The admin descriptors (list, form and relation screens) and the settings store
 # the module contributes from its `register`.
-laterite-admin = "0.9"
+laterite-admin = "0.9.31"
 # Password hashing and the password policy: one implementation for operators and
 # for the application's users.
-laterite-auth = "0.9"
+laterite-auth = "0.9.31"
 # The schema identifier enums use sea-query's `Iden` derive, whose generated code
 # references the `sea_query` crate directly.
 sea-query = { version = "0.32", features = ["derive"] }
@@ -40,5 +39,5 @@ sha2 = "0.10"
 hex = "0.4"
 
 [dev-dependencies]
-laterite-core = { version = "0.9", features = ["sqlite", "postgres", "testing"] }
+laterite-core = { version = "0.9.31", features = ["sqlite", "postgres", "testing"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
