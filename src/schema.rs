@@ -1,6 +1,7 @@
 //! Table and column identifiers, as `sea-query` `Iden` enums. The enum name
 //! becomes the vendor-prefixed table name in snake_case.
 
+use laterite_core::sea_query;
 use sea_query::Iden;
 
 /// The users of the application.

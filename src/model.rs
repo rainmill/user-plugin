@@ -1,5 +1,6 @@
 //! The plugin's records as Rust values.
 
+use laterite_core::serde_json;
 use serde::{Deserialize, Serialize};
 
 /// A user of the application.

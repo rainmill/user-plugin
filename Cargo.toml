@@ -22,15 +22,9 @@ laterite-admin = "0.10"
 # Password hashing and the password policy: one implementation for operators and
 # for the application's users.
 laterite-auth = "0.10"
-# The schema identifier enums use sea-query's `Iden` derive, whose generated code
-# references the `sea_query` crate directly.
-sea-query = { version = "0.32", features = ["derive"] }
-# Query execution goes through sqlx's portable `Any` layer, matching the framework.
-sqlx = { version = "0.8", default-features = false, features = ["runtime-tokio", "tls-rustls", "any"] }
 # Text timestamps (the framework stores times as ISO strings).
 chrono = { version = "0.4", default-features = false, features = ["clock"] }
 serde = { version = "1", features = ["derive"] }
-serde_json = "1"
 async-trait = "0.1"
 thiserror = "1"
 # Activation codes and reset tokens: random bytes, hashed before they are stored.
