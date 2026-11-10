@@ -10,6 +10,7 @@ bump is breaking and a patch is additive.
 ### Changed
 
 - Requires Laterite 0.10.
+- The settings item is labelled User Settings.
 
 ## [0.1.0] - 2026-11-10
 

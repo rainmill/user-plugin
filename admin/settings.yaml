@@ -1,6 +1,6 @@
 # Settings > Users: how users sign in, register and become active.
 code: rainmill.user.settings
-label: Users
+label: User Settings
 description: "Sign-in, registration and activation for the application's users."
 category: Users
 icon: users
