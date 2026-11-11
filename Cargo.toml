@@ -15,13 +15,13 @@ plugin = "rainmill.user"
 [dependencies]
 # Laterite crates are version-only so this manifest is location-independent
 # (identical whether dev-symlinked under an app's plugins/ tree or vendored).
-laterite-core = "0.10"
+laterite-core = "0.11"
 # The admin descriptors (list, form and relation screens) and the settings store
 # the module contributes from its `register`.
-laterite-admin = "0.10"
+laterite-admin = "0.11"
 # Password hashing and the password policy: one implementation for operators and
 # for the application's users.
-laterite-auth = "0.10"
+laterite-auth = "0.11"
 # Text timestamps (the framework stores times as ISO strings).
 chrono = { version = "0.4", default-features = false, features = ["clock"] }
 serde = { version = "1", features = ["derive"] }
@@ -33,5 +33,5 @@ sha2 = "0.10"
 hex = "0.4"
 
 [dev-dependencies]
-laterite-core = { version = "0.10", features = ["sqlite", "postgres", "testing"] }
+laterite-core = { version = "0.11", features = ["sqlite", "postgres", "testing"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
